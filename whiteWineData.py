@@ -1,0 +1,41 @@
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+class WhiteWineData:
+
+	def __init__(self):
+		self.csvPath = "winequality-white.csv"
+
+		# Input attribute values
+		self.fixedAcidity, self.volatileAcidity, self.citricAcid = [], [], []
+		self.residualSugar, self.chlorides, self.freeSulfurDioxide = [], [], []
+		self.totalSulfurDioxide, self.density, self.pH = [], [], []
+		self.sulphates, self.alcohol = [], []
+
+		# Output attribute value
+		self.quality = []
+
+		# List of attributes
+		self.attrList = [self.fixedAcidity, self.volatileAcidity, self.citricAcid, self.residualSugar, self.chlorides, self.freeSulfurDioxide, self.totalSulfurDioxide, self.density, self.pH, self.sulphates, self.alcohol, self.quality]
+
+		self.numberOfSamples = self.calcNumberOfSamples()
+		self.readDataFromCsv()
+	
+	#Calculates number of samples in data from the csv file
+	def calcNumberOfSamples(self):
+		numberOfLines = len(list(csv.reader(open(self.csvPath))))
+		return numberOfLines-1
+
+	def readDataFromCsv(self):
+		with open(self.csvPath) as csvfile:
+			data = csv.reader(csvfile, delimiter=';')
+			firstLine = True
+			for row in data:
+				if firstLine:
+					firstLine = False
+					continue
+				for i in range(0, len(self.attrList)):
+					self.attrList[i].append(float(row[i]))
+			csvfile.close()

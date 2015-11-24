@@ -9,7 +9,7 @@ csvPath = "winequality-white.csv"
 fixedAcidity, volatileAcidity, citricAcid = [], [], []
 residualSugar, chlorides, freeSulfurDioxide = [], [], []
 totalSulfurDioxide, Density, pH = [], [], []
-sulphates, alcohol = [], [], 
+sulphates, alcohol = [], []
 
 #Init outout attribute value
 quality = []
