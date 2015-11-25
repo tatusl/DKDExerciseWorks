@@ -29,7 +29,7 @@ def getBinsFreedmanDiaconisChoice(numberOfSamples, list):
 def plotHistogram(attributeData, numberOfBins, attributeName, binSelectionMethod, plotColor):
 	figure = plt.figure()
 	plt.hist(attributeData, bins=numberOfBins, color=plotColor)
-	plt.title(attributeName + '. Bins: ' + binSelectionMethod)
+	plt.title(attributeName.capitalize() + '. Bins: ' + binSelectionMethod)
 	return figure
 
 # Saves the given figure
@@ -46,14 +46,17 @@ data = WhiteWineData()
 for i in range(0, len(data.attrList)):
 	attribute = data.attrList[i]
 	attributeName = data.attributeNames[i]
+
 	# Plot and save histogram, bin selection used: Freedman Diaconis method
 	binSelectionMethod = 'Freedman Diaconis method'
-	figureFRM = plotHistogram(attribute, getBinsFreedmanDiaconisChoice(data.numberOfSamples, attribute), attributeName.capitalize(), binSelectionMethod, 'green')
+	figureFRM = plotHistogram(attribute, getBinsFreedmanDiaconisChoice(data.numberOfSamples, attribute), attributeName, binSelectionMethod, 'green')
 	saveFigure(figureFRM, attributeName + '_' + binSelectionMethod + '.png')
+
 	# Plot and save histogram, bin selection used: Sturges Rule
 	binSelectionMethod = 'Sturges rule'
 	figureSR = plotHistogram(attribute, getBinsSturgesRule(data.numberOfSamples), attributeName, binSelectionMethod, 'blue')
 	saveFigure(figureSR, attributeName + '_' + binSelectionMethod + '.png')
+	
 	# Plot and save histogram, bin selection used: Square root choice
 	binSelectionMethod = 'Square root choice'
 	figureSRC = plotHistogram(attribute, getBinsSquareRootChoice(data.numberOfSamples), attributeName, binSelectionMethod, 'red')
