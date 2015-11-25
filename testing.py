@@ -9,4 +9,5 @@ data = WhiteWineData()
 for attr in data.attributeNames:
 	print(attr)
 '''
-print(data.attributeNames)
+#print(data.attributeNames)
+print(data.wholeData)

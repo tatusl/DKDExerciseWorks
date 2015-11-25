@@ -23,6 +23,7 @@ class WhiteWineData:
 		self.numberOfSamples = self.calcNumberOfSamples()
 		self.attributeNames = self.readAttributeNamesFromCsv()
 		self.readDataFromCsv()
+		self.wholeData = self.constructWholeData()
 	
 	# Calculates number of samples in data from the csv file
 	def calcNumberOfSamples(self):
@@ -42,6 +43,15 @@ class WhiteWineData:
 				for i in range(0, len(self.attrList)):
 					self.attrList[i].append(float(row[i]))
 			csvfile.close()
+
+	def constructWholeData(self):
+		with open(self.csvPath) as csvfile:
+			csvfile.readline()
+			data = csv.reader(csvfile, delimiter=';')
+			wholeData = []
+			for row in data:
+				wholeData.append(row)
+		return wholeData
 
 	# Read attribute names from the csv
 	def readAttributeNamesFromCsv(self):
