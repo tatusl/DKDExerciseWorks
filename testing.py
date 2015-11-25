@@ -5,4 +5,8 @@ data = WhiteWineData()
 #print(data.numberOfSamples)
 #print(data.csvPath)
 #print(data.quality)
-print(data.pH)
+'''
+for attr in data.attributeNames:
+	print(attr)
+'''
+print(data.attributeNames)
