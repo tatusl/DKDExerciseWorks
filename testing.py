@@ -11,3 +11,4 @@ for attr in data.attributeNames:
 '''
 #print(data.attributeNames)
 print(data.wholeData)
+print(data.attrList)
