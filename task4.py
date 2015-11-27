@@ -12,16 +12,16 @@ data = WhiteWineData().wholeData
 def plot2DMDSScatterPlot(data):
 	
 	# Limit sample. Maybe add random choice.
-	data = data[0: 1000]
+	#data = data[0: 2000]
 
 	# Calcluate Euclidean distances
-	distances = euclidean_distances(data)
+	#distances = euclidean_distances(data)
 
 	# Multi Dimensional Scaling
-	mds = manifold.MDS(n_components=2, dissimilarity="precomputed", n_jobs=1)
+	mds = manifold.MDS(n_components=2, dissimilarity="euclidean", n_jobs=1)
 
 	# Calculate coordinates for new (2D) space
-	coordinates = mds.fit(distances).embedding_
+	coordinates = mds.fit(data).embedding_
 
 	# Plot
 	plt.plot(coordinates[:,0], coordinates[:,1], 'o', markersize=7, color='red')
