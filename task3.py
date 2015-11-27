@@ -8,6 +8,8 @@ from whiteWineData import WhiteWineData
 def computePrincipalComponents(numpyArray):
 	# Calculate covariance matrix
 	covMatrix = np.cov(numpyArray.T)
+	# Check te docs
+	#covMatrix = np.cov(numpyArray, rowvar=0)
 
 	# Calculate eigenvectors and eigenvalues from the covariance matrix
 	eigenValues, eigenVectors = np.linalg.eig(covMatrix)
