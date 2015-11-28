@@ -25,9 +25,10 @@
 
 \usepackage{graphicx} % Required for the inclusion of images
 \usepackage{natbib} % Required to change bibliography style to APA
-\usepackage{amsmath} % Required for some math elements 
+%\usepackage{amsmath} % Required for some math elements 
 \usepackage[utf8]{inputenc} % Use UTF-8
 \usepackage{float}
+\usepackage{booktabs}
 
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
@@ -98,5 +99,21 @@ Figures \ref{fig:histogram_fdr}, \ref{fig:histogram_src}, \ref{fig:histogram_stu
 
 \section{Task 5: Pearson and Kendall's Tau Correlation Tables}
 
+Correlation tables were calculated with Pandas' "corr" method.
 
+\subsection{Pearson Correlation Table}
+
+\resizebox{\linewidth}{!}{%
+
+\input{pearson}
+
+}
+
+\subsection{Kendall's Tau Correlation Table}
+
+\resizebox{\linewidth}{!}{%
+
+\input{kendallTau}
+
+}
 \end{document}
