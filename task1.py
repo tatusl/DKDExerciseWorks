@@ -6,11 +6,15 @@ from whiteWineData import WhiteWineData
 
 # Returns the number of bins with Sturges rule
 def getBinsSturgesRule(numberOfSamples):
-	return math.ceil(math.log(numberOfSamples, 2) + 1)
+	bins = math.ceil(math.log(numberOfSamples, 2) + 1)
+	print('Number of bins with Sturges rule: ' + str(bins))
+	return bins
 
 # Returns the number of bins with Square root choice
 def getBinsSquareRootChoice(numberOfSamples):
-	return math.ceil(math.sqrt(numberOfSamples))
+	bins = math.ceil(math.sqrt(numberOfSamples))
+	print('Number of bins with Square-root choice: ' + str(bins))
+	return bins
 
 # Returns interquartile range
 def calcIQR(list):
@@ -23,13 +27,15 @@ def getBinsFreedmanDiaconisChoice(numberOfSamples, list):
 	binWidth = 2*(calcIQR(list)/(numberOfSamples**(1/3.0)))
 	maximum = max(list)
 	minimum = min(list)
-	return math.ceil((maximum-minimum)/binWidth)
+	bins = math.ceil((maximum-minimum)/binWidth)
+	print('Number of bins with Freedman-Diaconis rule ' + str(bins))
+	return bins
 
 # Plots and returns the histogram with given data and number of bins
 def plotHistogram(attributeData, numberOfBins, attributeName, binSelectionMethod, plotColor):
 	figure = plt.figure()
 	plt.hist(attributeData, bins=numberOfBins, color=plotColor)
-	plt.title(attributeName.capitalize() + '. Bins: ' + binSelectionMethod)
+	plt.title(attributeName.capitalize() + '. Bins: ' + str(binSelectionMethod))
 	return figure
 
 # Saves the given figure
