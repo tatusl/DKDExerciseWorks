@@ -12,10 +12,12 @@ data1 = WhiteWineData()
 data2 = pandas.read_csv('winequality-white.csv', sep=';')
 
 def drawScatterPlot(attr1, attr2, attr1Name, attr2Name):
-	attr1 = np.random.choice(attr1, 1500)
-	attr2 = np.random.choice(attr2, 1500)
+	if (attr1Name == 'density' or attr2Name == 'density'):
+		attr1 = np.random.choice(attr1, 1000)
+		attr2 = np.random.choice(attr2, 1000)
 	scatter = plt.figure()
 	plt.scatter(attr1, attr2)
+	plt.title('n = ' + str(len(attr1)))
 	plt.xlabel(attr1Name)
 	plt.ylabel(attr2Name)
 	return scatter

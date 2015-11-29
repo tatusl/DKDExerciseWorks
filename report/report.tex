@@ -93,9 +93,75 @@ Figures \ref{fig:histogram_fdr}, \ref{fig:histogram_src}, \ref{fig:histogram_stu
 
 \section{Task 2: Scatter Plots and Parallel Coordinates Representation}
 
+Scatter plot were produced using matplotlib's scatter function. Attributes were plotted against each other, but only three are added to this document.
+
+% Scatter plot, density and sulphates
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{scatter_plot_density_sulphates}
+    \caption{Scatter plot of density and sulphates}
+    \label{fig:scatter_dens_sulph}
+\end{figure}
+% End of picture
+
+% Scatter plot, ph and alcohol
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{scatter_plot_pH_alcohol}
+    \caption{Scatter plot of pH and alcohol}
+    \label{fig:scatter_ph_alc}
+\end{figure}
+% End of picture
+
+% Scatter plot, residual sugar and free sulfur dioxide
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{scatter_plot_residual_sugar_free_sulfur_dioxide}
+    \caption{Scatter plot of residual sugar and free sulfur dioxide}
+    \label{fig:scatter_rs_fsd}
+\end{figure}
+% End of picture
+
+Figure \ref{fig:scatter_dens_sulph} shows how samples are omitted to make the density variations more visible. Figure \ref{fig:scatter_ph_alc} shows how samples have quite evenly scatted pH values relative to alcohol. Figure \ref{fig:scatter_rs_fsd} shows some outliers.
+
 \section{Task 3: Principal Component Analysis}
 
+PCA component analysis was done using numpy's cov method to calculate covariance matrix and linalg.eig to calculate eigen vectors and eigen values.
+
+% PCA, raw
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pca_raw}
+    \caption{PCA with raw data}
+    \label{fig:pca_raw}
+\end{figure}
+% End of picture
+
+% PCA, normalized
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pca_normalized}
+    \caption{PCA with z-score normalized data}
+    \label{fig:pca_normalized}
+\end{figure}
+% End of picture
+
+Figure \ref{fig:pca_raw} shows scatter plot of the first principal components computed with raw data. Figure \ref{fig:pca_normalized} shows the same scatter plot with normalized data. With normalization, the scatter plot shows more rounded figure compared to raw data which has kind of triangle shape.
+
 \section{Task 4: 2D Multidimensional Scaling}
+
+2D MDS was calculated with MDS function from scikit-learn.
+
+% 2D MDS
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{2d_mds}
+    \caption{2D MDS}
+    \label{fig:mds}
+\end{figure}
+% End of picture
+
+Figure \ref{fig:mds} shows 2D MDS scatter plot. The figure has some resemblence to PCA scatter plot with raw data. 
 
 \section{Task 5: Pearson and Kendall's Tau Correlation Tables}
 

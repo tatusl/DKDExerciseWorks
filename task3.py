@@ -33,10 +33,11 @@ def computePrincipalComponents(numpyArray):
 
 	return transformed
 
-def plotPrincipalComponents(data):
+def plotPrincipalComponents(data, title):
 	plt.plot(data[0,:], data[1,:], 'o', markersize=7, color='red')
-	#plt.xlim(0,300)
-	#plt.ylim(-50,50)
+	plt.xlabel('First principal component')
+	plt.ylabel('Second principal component')
+	plt.title(title)
 	plt.show()
 
 # Save data to numpy array
@@ -45,6 +46,6 @@ numpyArray = np.array(WhiteWineData().wholeData).astype(np.float)
 # Zscore standardise numpy array
 numpyArrayZscored = ms.zscore(numpyArray)
 
-plotPrincipalComponents(computePrincipalComponents(numpyArray))
+plotPrincipalComponents(computePrincipalComponents(numpyArray), 'PCA, raw data')
 
-plotPrincipalComponents(computePrincipalComponents(numpyArrayZscored))
+plotPrincipalComponents(computePrincipalComponents(numpyArrayZscored), 'PCA, normalized data')

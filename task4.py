@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 from sklearn import manifold
-from sklearn.metrics import euclidean_distances
 import scipy.stats.mstats as ms
 
 from whiteWineData import WhiteWineData
