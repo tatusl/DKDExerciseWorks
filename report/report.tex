@@ -95,7 +95,7 @@ Figures \ref{fig:histogram_fdr}, \ref{fig:histogram_src}, \ref{fig:histogram_stu
 
 \subsection{Scatter plots}
 
-Scatter plot were produced using matplotlib's scatter function. Attributes were plotted against each other, but only three are added to this document.
+Scatter plots were produced using matplotlib's scatter function. Attributes were plotted against each other, but only three were added to this document.
 
 % Scatter plot, density and sulphates
 \begin{figure}[H]
@@ -124,9 +124,11 @@ Scatter plot were produced using matplotlib's scatter function. Attributes were 
 \end{figure}
 % End of picture
 
-Figure \ref{fig:scatter_dens_sulph} shows how samples are omitted to make the density variations more visible. Figure \ref{fig:scatter_ph_alc} shows how samples have quite evenly scatted pH values relative to alcohol. Figure \ref{fig:scatter_rs_fsd} shows some outliers.
+Figure \ref{fig:scatter_dens_sulph} shows how samples are omitted to make the density variations more visible. Figure \ref{fig:scatter_ph_alc} shows how samples have quite evenly scattered pH values relative to alcohol. Figure \ref{fig:scatter_rs_fsd} shows some outliers.
 
 \subsection{Parallel coordinates representation}
+
+Parallel coordinates representation were plotted with pandas' parallel\_coordinates method. The samples are plotted against quality attribute.
 
 % Parallel, raw
 \begin{figure}[H]
@@ -155,6 +157,8 @@ Figure \ref{fig:scatter_dens_sulph} shows how samples are omitted to make the de
 \end{figure}
 % End of picture
 
+The method does not allow attributes to be scaled independently. Figure \ref{fig:parallel_raw} shows the plotted figure and it can be seen that this figure is not very useful for data understanding. That is why the data values were scaled, which can be seen in Figure \ref{fig:parallel_scaled}. Figure \ref{fig:parallel_scaled_subsample} shows the same image with number of samples limited to 1500 to provide a bit clearer picture.
+
 \section{Task 3: Principal Component Analysis}
 
 PCA component analysis was done using numpy's cov method to calculate covariance matrix and linalg.eig to calculate eigen vectors and eigen values.
@@ -177,7 +181,7 @@ PCA component analysis was done using numpy's cov method to calculate covariance
 \end{figure}
 % End of picture
 
-Figure \ref{fig:pca_raw} shows scatter plot of the first principal components computed with raw data. Figure \ref{fig:pca_normalized} shows the same scatter plot with normalized data. With normalization, the scatter plot shows more rounded figure compared to raw data which has kind of triangle shape.
+Figure \ref{fig:pca_raw} shows scatter plot of the first two principal components computed with raw data. Figure \ref{fig:pca_normalized} shows the same scatter plot with normalized data. With normalization, the scatter plot shows more rounded figure compared to raw data which has kind of triangle shape.
 
 \section{Task 4: 2D Multidimensional Scaling}
 
@@ -192,7 +196,7 @@ Figure \ref{fig:pca_raw} shows scatter plot of the first principal components co
 \end{figure}
 % End of picture
 
-Figure \ref{fig:mds} shows 2D MDS scatter plot. The figure has some resemblence to PCA scatter plot with raw data. 
+Figure \ref{fig:mds} shows 2D MDS scatter plot. The figure has some resemblence to PCA scatter plot with raw data as data points are more scattered on the direction of x-axis.
 
 \section{Task 5: Pearson and Kendall's Tau Correlation Tables}
 
