@@ -7,11 +7,14 @@ import itertools
 from pandas.tools.plotting import parallel_coordinates
 from pandas.tools.plotting import scatter_matrix
 from whiteWineData import WhiteWineData
+from sklearn import preprocessing
+import random
 
 data1 = WhiteWineData()
 data2 = pandas.read_csv('winequality-white.csv', sep=';')
 
 def drawScatterPlot(attr1, attr2, attr1Name, attr2Name):
+	# Limit number of samples if either of the attributes is density
 	if (attr1Name == 'density' or attr2Name == 'density'):
 		attr1 = np.random.choice(attr1, 1000)
 		attr2 = np.random.choice(attr2, 1000)
@@ -25,16 +28,33 @@ def drawScatterPlot(attr1, attr2, attr1Name, attr2Name):
 def drawParallelCoordinates(data, columnString):
 	plt.figure()
 	parallel_coordinates(data, columnString)
+	plt.title('Parallel coordinates, raw data')
 	plt.show()
 
-def drawParallelCoordinatesWithLimit(data, columnString):
-	# Reduce number of samples
-	#sampledData = data.loc[np.random.choice(data.index, 500, replace=False)]
-	#print(len(sampledData))
-	normData = data/data.max().astype(np.float64)
+def drawParallelCoordinatesWithScaledValues(data, columnNames):
+	# Construct dataframe without quality attribute (don't want to scale that)
+	dataWoQuality = pandas.DataFrame(data.iloc[:,0:11])
+	# Scale values
+	scaled = pandas.DataFrame(preprocessing.scale(dataWoQuality))
+
+	# Construct dataframe with quality attribute values
+	quality = pandas.DataFrame(data.iloc[:,11])
+
+	# Concatenate dataframes
+	allAttributes = pandas.concat([scaled, quality], axis=1)
+
+	# Add column names
+	allAttributes.columns = columnNames
+
+	# Select random samples
+	num = 1500
+	allAttributes = allAttributes.loc[random.sample(list(allAttributes.index), num)]
+
+	# Plot figure
 	plt.figure()
-	parallel_coordinates(normData, columnString)
-	#plt.ylim(0, 15)
+	parallel_coordinates(allAttributes, 'quality')
+	plt.title('Parallel coordinates, scaled values ' + 'n: ' + str(len(allAttributes)))
+	plt.ylim(-2, 4)
 	plt.show()
 
 def saveAllScatterPlots(data, attributeNames):
@@ -54,4 +74,10 @@ def saveFigure(figure, filename):
 	figure.savefig(_filename)
 	print('Saved ' + filename)
 	
-saveAllScatterPlots(data1.attrList, data1.attributeNames)
+#saveAllScatterPlots(data1.attrList, data1.attributeNames)
+
+#drawParallelCoordinates(data2, 'quality')
+drawParallelCoordinatesWithScaledValues(data2, data1.attributeNames)
+
+
+

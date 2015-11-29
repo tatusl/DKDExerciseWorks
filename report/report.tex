@@ -74,7 +74,7 @@ Histograms were plotted using python and matplotlib. Freedman-Diaconis rule, Stu
 % Histogram, Freedman Diaconis
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{alcohol_src}
+    \includegraphics[width=0.85\textwidth]{alcohol_src}
     \caption{Histogram of alcohol attribute. Number of bins selected with Square-root choice.}
     \label{fig:histogram_src}
 \end{figure}
@@ -83,7 +83,7 @@ Histograms were plotted using python and matplotlib. Freedman-Diaconis rule, Stu
 % Histogram, Sturges' rule
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{alcohol_sturge}
+    \includegraphics[width=0.85\textwidth]{alcohol_sturge}
     \caption{Histogram of alcohol attribute. Number of bins selected with Sturges' rule.}
     \label{fig:histogram_sturge}
 \end{figure}
@@ -93,12 +93,14 @@ Figures \ref{fig:histogram_fdr}, \ref{fig:histogram_src}, \ref{fig:histogram_stu
 
 \section{Task 2: Scatter Plots and Parallel Coordinates Representation}
 
+\subsection{Scatter plots}
+
 Scatter plot were produced using matplotlib's scatter function. Attributes were plotted against each other, but only three are added to this document.
 
 % Scatter plot, density and sulphates
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{scatter_plot_density_sulphates}
+    \includegraphics[width=0.9\textwidth]{scatter_plot_density_sulphates}
     \caption{Scatter plot of density and sulphates}
     \label{fig:scatter_dens_sulph}
 \end{figure}
@@ -107,7 +109,7 @@ Scatter plot were produced using matplotlib's scatter function. Attributes were 
 % Scatter plot, ph and alcohol
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{scatter_plot_pH_alcohol}
+    \includegraphics[width=0.85\textwidth]{scatter_plot_pH_alcohol}
     \caption{Scatter plot of pH and alcohol}
     \label{fig:scatter_ph_alc}
 \end{figure}
@@ -116,13 +118,42 @@ Scatter plot were produced using matplotlib's scatter function. Attributes were 
 % Scatter plot, residual sugar and free sulfur dioxide
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{scatter_plot_residual_sugar_free_sulfur_dioxide}
+    \includegraphics[width=0.85\textwidth]{scatter_plot_residual_sugar_free_sulfur_dioxide}
     \caption{Scatter plot of residual sugar and free sulfur dioxide}
     \label{fig:scatter_rs_fsd}
 \end{figure}
 % End of picture
 
 Figure \ref{fig:scatter_dens_sulph} shows how samples are omitted to make the density variations more visible. Figure \ref{fig:scatter_ph_alc} shows how samples have quite evenly scatted pH values relative to alcohol. Figure \ref{fig:scatter_rs_fsd} shows some outliers.
+
+\subsection{Parallel coordinates representation}
+
+% Parallel, raw
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{parallel_raw}
+    \caption{Parallel coordinates representation with raw data values}
+    \label{fig:parallel_raw}
+\end{figure}
+% End of picture
+
+% Parallel, scaled
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{parallel_scaled}
+    \caption{Parallel coordinates representation with scaled data values}
+    \label{fig:parallel_scaled}
+\end{figure}
+% End of picture
+
+% Parallel, scaled, subsample
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{parallel_scaled_subsample}
+    \caption{Parallel coordinates representation with scaled data values. Number of samples is limited to 1500}
+    \label{fig:parallel_scaled_subsample}
+\end{figure}
+% End of picture
 
 \section{Task 3: Principal Component Analysis}
 
