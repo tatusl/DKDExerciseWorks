@@ -21,7 +21,7 @@ with open('kendallTau.html', 'w') as writer:
 with open('pearson.tex', 'w') as writer:
 	writer.write(pearsonCorrTable.to_latex())
 
-with open('kendallTatu.tex', 'w') as writer:
+with open('kendallTau.tex', 'w') as writer:
 	writer.write(kendallCorrTable.to_latex())
 
 #print(asHtml)
