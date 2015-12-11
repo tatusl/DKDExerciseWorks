@@ -1,1 +1,1 @@
-First exercise work for Data Analysis and Discovery Knowledge course
+Exercise works for Data Analysis and Discovery Knowledge course.
