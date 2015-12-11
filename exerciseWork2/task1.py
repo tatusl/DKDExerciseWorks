@@ -1,6 +1,45 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+
+# Returns out-of-sample error vectors
+def calculateOutOfSampleErrorVectors(dataIn):
+	# Split data to 5 parts
+	splittedData = np.array_split(dataIn, 5)
+
+	# List containing out-of-sample error vectors for each data part
+	outOfSampleErrorVectors = []
+
+	for dataPart in splittedData:
+		# Split input variables and output variable out of the data part. Typecast to numpy array
+		splittedX = np.array(dataPart.iloc[0:,0:11])
+		splittedY = np.array(dataPart.quality)
+		# List containing errors for the data part
+		errors = []
+
+		for i in range(0, len(splittedY)):
+			sampleReshaped = splittedX[i].reshape(1, -1)
+			# Subtract the predicted quality from actual quality
+			error = float(splittedY[i] - lm.predict(sampleReshaped))
+			errors.append(error)
+
+		outOfSampleErrorVectors.append(errors)
+
+	return outOfSampleErrorVectors
+
+# Returns concatenated vectors
+def concatenateVectors(vectors):
+	vectorsConcatenated = []
+	for vector in vectors:
+		vectorsConcatenated += vector
+	return vectorsConcatenated
+
+# Plot histogram
+def plotHistogram(concatVector):
+	figure = plt.figure()
+	plt.hist(concatVector, bins=50, color='b')
+	plt.show()
 
 # Read data to pandas dataframe
 data = pd.read_csv('winequality-white.csv', sep=';')
@@ -13,7 +52,6 @@ y = data.quality
 
 # Use linear regression from scikit
 lm = LinearRegression()
-
 lm.fit(x,y)
 
 # Get intercept and coefficients
@@ -28,26 +66,9 @@ print('Coeffients are: ')
 for i in zip(x, coefs):
 	print(i)
 
-splittedData = np.array_split(data, 5)
+outOfSampleErrorVectors = calculateOutOfSampleErrorVectors(data)
 
-# Calculate out sample error
+concatenated = concatenateVectors(outOfSampleErrorVectors)
 
+plotHistogram(concatenated)
 
-outOfSampleErrorVectors = []
-
-for part in splittedData:
-	splittedX = part.iloc[0:,0:11]
-	splittedY = part.quality
-	predictedQualityList = []
-
-	for sample in splittedX.iterrows():
-		numpySample = np.array(sample[1])
-		#print(numpySample)
-		predictedQualityList.append(lm.predict(numpySample))
-	
-	outOfSampleVector = []
- 
-	for i in range(0, len(splittedY)):
-		print(splittedY[i][0] - predictedQualityList[i])
-		#outOfSampleVector.append(splittedY[i] - predictedQualityList[i])
-	
