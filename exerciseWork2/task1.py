@@ -39,7 +39,6 @@ def calculateInSampleErrorVectors(dataIn):
 
 	# Create in-sample data
 	inSampleDataList = []
-
 	for combination in indexCombinations:
 		inSampleData = []
 		for index in combination:
@@ -79,7 +78,7 @@ def concatenateVectors(vectors):
 def plotHistogram(concatVector, title):
 	figure = plt.figure()
 	plt.hist(concatVector, bins=50, color='b')
-	plt.title(title)
+	plt.title(title), plt.xlabel("Error"), plt.ylabel("Frequency")
 	plt.show()
 
 # Read data to pandas dataframe
@@ -101,20 +100,25 @@ intercept = lm.intercept_
 
 # Combine them to get the weight vector
 weightVector = np.hstack((np.array(intercept), np.array(coefs)))
+np.set_printoptions(suppress=True)
+np.set_printoptions(precision=5)
 
+print(weightVector)
+
+'''
 print('Coeffients are: ')
 
 for i in zip(x, coefs):
 	print(i)
-
+'''
 
 outOfSampleErrorVectors = calculateOutOfSampleErrorVectors(data)
 concatenatedOut = concatenateVectors(outOfSampleErrorVectors)
-#plotHistogram(concatenatedOut, 'Out-of-Sample error histogram')
+plotHistogram(concatenatedOut, 'Out-of-Sample Error Histogram')
 
 inSampleErrorVectors = calculateInSampleErrorVectors(data)
 concatenatedIn = concatenateVectors(inSampleErrorVectors)
-#plotHistogram(concatenatedIn, 'In-Sample error histogram')
+plotHistogram(concatenatedIn, 'In-Sample Error Histogram')
 
 numpyOut = np.array(concatenatedOut)
 meanOut = np.mean(numpyOut)
